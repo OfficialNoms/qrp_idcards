@@ -12,6 +12,7 @@ end)
 RegisterServerEvent('qrp_issueidcard')
 AddEventHandler('qrp_issueidcard', function(src,url)
 	local xPlayer = ESX.GetPlayerFromId(source)
+	local metadata = {}
 	metadata.type = xPlayer.getName()
 	metadata.citizenid = 'XXX-XXX' --Use this if you want to generate a random CitizenID number for your player
 	metadata.firstName = xPlayer.get('firstName')
@@ -20,5 +21,5 @@ AddEventHandler('qrp_issueidcard', function(src,url)
 	metadata.sex = xPlayer.get('sex')
 	metadata.height = xPlayer.get('height')
 	metadata.mugshoturl = url
-	exports['linden_inventory']:addInventoryItem(xPlayer, 'identification', 1, { mugshoturl = url })
+	exports['linden_inventory']:addInventoryItem(xPlayer, 'identification', 1, metadata)
 end)
